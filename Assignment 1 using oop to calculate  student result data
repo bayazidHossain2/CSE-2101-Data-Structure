@@ -12,6 +12,7 @@ public:
     }
 };
 class Student{
+///Using composition concept 
     Course course[3];
 public:
     int student_id;
@@ -44,8 +45,10 @@ ostream& operator<<(ostream& out,Student student){
     return out;
 }
 void set_merit(Student student[],int N){
+///Traversing
     for(int i=0;i<N;i++){
         int merit=0;
+        ///Traversing again for searching hou many student cGPA is greater than i th Student cgpa
         for(int j=0;j<N;j++){
             if(student[i].cgpa<student[j].cgpa) merit++;
         }student[i].merit_position=merit+1;
@@ -57,6 +60,7 @@ int main(){
     int number_of_student;
     cin>>number_of_student;
     Student student[number_of_student];
+    ///Traverse data to input student information
     for(int i=0;i<number_of_student;i++){
         cin>>student[i];
     }

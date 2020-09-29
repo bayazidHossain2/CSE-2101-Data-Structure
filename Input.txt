@@ -1,0 +1,64 @@
+Inpur:
+5
+12
+3.59 3
+3.14 1.5
+3.56 3
+13
+3.19 3
+3.14 1.5
+3.16 3
+14
+3.99 3
+3.14 1.5
+3.76 3
+15
+3.52 3
+3.14 1.5
+3.16 3
+16
+3.99 3
+3.14 1.5
+3.06 3
+
+Input and Output:
+Enter the number of Student: 5
+Enter Student ID: 12
+Enter Course 1 Grad point and credits: 3.59 3
+Enter Course 2 Grad point and credits: 3.14 1.5
+Enter Course 3 Grad point and credits: 3.56 3
+Enter Student ID: 13
+Enter Course 1 Grad point and credits: 3.19 3
+Enter Course 2 Grad point and credits: 3.14 1.5
+Enter Course 3 Grad point and credits: 3.16 3
+Enter Student ID: 14
+Enter Course 1 Grad point and credits: 3.99 3
+Enter Course 2 Grad point and credits: 3.14 1.5
+Enter Course 3 Grad point and credits: 3.76 3
+Enter Student ID: 15
+Enter Course 1 Grad point and credits: 3.52 3
+Enter Course 2 Grad point and credits: 3.14 1.5
+Enter Course 3 Grad point and credits: 3.16 3
+Enter Student ID: 16
+Enter Course 1 Grad point and credits: 3.99 3
+Enter Course 2 Grad point and credits: 3.14 1.5
+Enter Course 3 Grad point and credits: 3.06 3
+student id: 12
+Cgpa: 3.488
+Merit: 2
+
+student id: 13
+Cgpa: 3.168
+Merit: 5
+
+student id: 14
+Cgpa: 3.728
+Merit: 1
+
+student id: 15
+Cgpa: 3.3
+Merit: 4
+
+student id: 16
+Cgpa: 3.448
+Merit: 3

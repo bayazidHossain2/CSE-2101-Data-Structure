@@ -80,25 +80,28 @@ void Student::print_student_information(){
     cout<<"student id: "<<get_student_id() NL;
     cout<<"Cgpa: "<<setprecision(3)<<get_cgpa() NL;
 }
-void merit_prossting(Student student[],int number_of_student){
-    bool swaped;
-    ///Bubble sort according to student cgpa
-    for(int i=0;i<number_of_student;i++){
-        swaped = false;
-        for(int j=0;j<number_of_student-1-i;j++){
-            if(student[j].get_cgpa() < student[j+1].get_cgpa()){
-                student[j].swap_student(student[j+1]);
-                swaped = true;
-            }
-        }if(!swaped) break;
+class Calculate{
+public:
+    void merit_prossting(Student student[],int number_of_student){
+        bool swaped;
+        ///Bubble sort according to student cgpa
+        for(int i=0;i<number_of_student;i++){
+            swaped = false;
+            for(int j=0;j<number_of_student-1-i;j++){
+                if(student[j].get_cgpa() < student[j+1].get_cgpa()){
+                    student[j].swap_student(student[j+1]);
+                    swaped = true;
+                }
+            }if(!swaped) break;
+        }
     }
-}
-///Linear search
-int search_student(Student student[],int student_id,int number_of_student){
-    for(int i=0;i<number_of_student;i++){
-        if(student[i].get_student_id() == student_id) return i;
-    }return -1;
-}
+    ///Linear search
+    int search_student(Student student[],int student_id,int number_of_student){
+        for(int i=0;i<number_of_student;i++){
+            if(student[i].get_student_id() == student_id) return i;
+        }return -1;
+    }
+};
 int main(){
     cout<<"Enter the number of Student: ";
     int number_of_student;
@@ -107,7 +110,8 @@ int main(){
     for(int i=0;i<number_of_student;i++){
         student[i].get_student_information();
     }
-    merit_prossting(student,number_of_student);
+    Calculate calculate;
+    calculate.merit_prossting(student,number_of_student);
     cout NL <<"Student Merit Position are : " NL NL;
     for(int i=0;i<number_of_student;i++){
         cout<<"Merit: "<<i+1 NL;
@@ -122,7 +126,7 @@ int main(){
     while(number_of_quarry--){
         cout<<"Enter student id: ";
         cin>>student_id;
-        int index = search_student(student,student_id,number_of_student);
+        int index = calculate.search_student(student,student_id,number_of_student);
         if(index == -1){
             cout<<"Student id not found." NL NL;
             continue;

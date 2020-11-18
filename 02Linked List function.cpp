@@ -37,19 +37,21 @@ void remove_node(Node *node){
             break;
         }current_node = current_node->next;
     }
-    if(node == endp){
+    if(current_node->next == endp){
         endp = current_node;
+        endp->next = nullptr;
         delete(node);
         return;
     }
     current_node->next = node->next;
     delete(node);
 }
-void print(Node *head){
-    cout<<(*head).data<<' ';
-    while((*head).next != NULL){
-        head = (*head).next;
-        cout<<(*head).data<<' ';
+void print(){
+    Node *current_node = head;
+    cout<<current_node->data<<' ';
+    while((*current_node).next != NULL){
+        current_node = (*current_node).next;
+        cout<<(*current_node).data<<' ';
     }cout<<endl;
 }
 int main(){
@@ -61,32 +63,30 @@ int main(){
     prepend(20);
     prepend(30);
     prepend(40);
-    print(head);
+    print();
     cout<<"Use of append function: "<<endl;
     append(1);
     append(100);
-    print(head);
+    print();
     cout<<"Again prepend : "<<endl;
     prepend(50);
-    print(head);
+    print();
     cout<<"Delete some node"<<endl;
     remove_node(head);
-    cout<<head->data<<endl;
     cout<<"After delete first node : ";
-    print(head);
+    print();
 
     Node *any_node = head->next;
     any_node = any_node->next;
     cout<<"Delete "<<any_node->data<<" from the data set : "<<endl;
     remove_node(any_node);
-    print(head);
+    print();
     remove_node(endp);
     cout<<"After deleting last element : ";
-    print(head);
+    print();
     cout<<"Again append 11 and prepend 13 : ";
     append(11);
     prepend(13);
-    print(head);
+    print();
     return 0;
 }
-

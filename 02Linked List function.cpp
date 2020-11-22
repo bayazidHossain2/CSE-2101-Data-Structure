@@ -41,10 +41,25 @@ void remove_node(Node *node){
         endp = current_node;
         endp->next = nullptr;
         delete(node);
-        return;
     }
     current_node->next = node->next;
     delete(node);
+}
+void insert(Node *node,int item){
+    Node *new_node = creat_node(item,node->next);
+    node->next = new_node;
+}
+void remove_item(int item){
+    Node *current_node = head;
+    while(current_node != nullptr){
+        if(current_node->data == item){
+            break;
+        }current_node = current_node->next;
+    }if(current_node == nullptr){
+        cout<<item<<" not found."<<endl;
+    }else{
+        remove_node(current_node);
+    }
 }
 void print(){
     Node *current_node = head;
@@ -84,9 +99,29 @@ int main(){
     remove_node(endp);
     cout<<"After deleting last element : ";
     print();
+    cout<<"Next element "<<head->data<<' '<<endp->data<<endl;
     cout<<"Again append 11 and prepend 13 : ";
     append(11);
     prepend(13);
+    print();
+    cout<<"Delete "<<30<<" from list : ";
+    remove_item(30);
+    print();
+    cout<<"Delete first item : ";
+    remove_item(head->data);
+    print();
+    cout<<"Delete last item : ";
+    remove_item(endp->data);
+    print();
+    cout<<"Delete a item which is not included on the list : ";
+    remove_item(19);
+    print();
+    cout<<"Again append 110 and prepend 103 : ";
+    append(110);
+    prepend(103);
+    print();
+    cout<<"Insert item after head : ";
+    insert(head,34);
     print();
     return 0;
 }

@@ -8,7 +8,7 @@ class Stuck{
         Node *next;
         Node *prev;
     };
-    Node *top;
+    Node *Top;
     int Stuck_size_{0};
     Node *creat_node(type item,Node* node){
         Stuck_size_++;
@@ -21,41 +21,51 @@ class Stuck{
     }
     Node *remove_node(){
         Stuck_size_--;
-        Node *temp = top->prev;
+        Node *temp = Top->prev;
         if(temp == nullptr){
-            return top;
+            return Top;
         }
         temp->next = nullptr;
-        delete(top);
+        delete(Top);
         return temp;
     }
 public:
     Stuck(){
-        top = (Node*) new Node;
-        if(top == nullptr){
+        Top = (Node*) new Node;
+        if(Top == nullptr){
             cout<<"Space not found."<<endl;
         }
     }
+    ~Stuck(){
+        while(Top->next != nullptr){
+            Node *temp = Top;
+            Top = temp->prev;
+            delete(temp);
+        }delete(Top);
+    }
     void push(type item){
         if(Stuck_size_ == 0){
-            top->data = item;
-            top->next = nullptr;
-            top->prev = nullptr;
+            Top->data = item;
+            Top->next = nullptr;
+            Top->prev = nullptr;
             Stuck_size_++;
         }else{
-            top = creat_node(item,top);
+            Top = creat_node(item,Top);
         }
     }
-    bool is_Stuck_empty(){
+    bool is_stuck_empty(){
         if(Stuck_size_ == 0) return true;
         else return false;
     }
+    type top(){
+        return Top->data;
+    }
     type pop(){
-        if(is_Stuck_empty()){
+        if(is_stuck_empty()){
             cout<<"Stuck is empty."<<endl;
         }else{
-            type item = top->data;
-            top = remove_node();
+            type item = Top->data;
+            Top = remove_node();
             return item;
         }return -1;
     }
@@ -64,7 +74,7 @@ public:
     }
     void print(){
         cout<<"stuck size : "<<Stuck_size_<<endl;
-        Node *cNode = top;
+        Node *cNode = Top;
         while(cNode != nullptr){
             cout<<cNode->data<<' ';
             cNode = cNode->prev;

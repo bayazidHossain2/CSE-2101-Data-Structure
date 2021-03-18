@@ -70,6 +70,7 @@ public:
             }else{
                 temp = temp->Right;
             }
+            if(temp==nullptr) return nullptr;
         }return temp;
     }
     void delete_item(type data){
@@ -102,7 +103,7 @@ public:
             }if(child != nullptr){
                 child->parent = parent;
             }
-        }else cout<<"Not found"<<endl;
+        }else cout<<"\nNot found : "<<data;
     }
     void postorder(Node *node){
         if(node->Left != nullptr){
@@ -154,6 +155,9 @@ int main(){
     cout<<"\nAfter deleting 9 (two child) : ";
     tree1.postorder(tree1.root());
     tree1.insert_item(9);
+    tree1.delete_item(22);
+    cout<<"\nAfter deleting 22 (two child) : ";
+    tree1.postorder(tree1.root());
     return 0;
 }
 

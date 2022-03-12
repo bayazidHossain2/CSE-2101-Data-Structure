@@ -2,8 +2,7 @@
 #include<stack>
 using namespace std;
 string func(string braketed){
-    string str;
-    stack<char> braket;
+    stack<char> opstack;
     bool makerev=0;
     for(int i=1;i<braketed.size();i++){
         //cout<<braketed[i]<<' '<<makerev<<endl;
@@ -11,11 +10,11 @@ string func(string braketed){
             if(braketed[i-1]=='-'){
                 //cout<<"braket before is a minous"<<endl;
                 makerev=1;
-                braket.push('-');
+                opstack.push('-');
             }else{
                 //cout<<"Braket before is a plus"<<endl;
                 makerev=0;
-                braket.push('+');
+                opstack.push('+');
             }
         }else if(makerev&&braketed[i]=='-'){
             braketed[i]='+';
@@ -23,9 +22,9 @@ string func(string braketed){
             braketed[i]='-';
         }
         else if(braketed[i]==')'){
-            if(braket.size()>=2){
-                braket.pop();
-                if(braket.top()=='-'){
+            if(opstack.size()>=2){
+                opstack.pop();
+                if(opstack.top()=='-'){
                     makerev=1;
                 }else{
                     makerev=0;

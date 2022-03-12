@@ -59,3 +59,13 @@ int main(){
     st=func(st);
     cout<<"Result is : "<<st<<endl;
 }
+
+/*
+
+a-(b-c-(d+e))-f
+Result is : a-b+c+d+e-f
+
+a-(b-c-(d+e)+x-y+z)-f
+Result is : a-b+c+d+e-x+y-z-f
+
+*/
